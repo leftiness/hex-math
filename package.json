@@ -13,10 +13,12 @@
 		"node": "0.12.7"
 	},
 	"scripts": {
-		"test": "mocha -R spec ./test/math.js"
+		"docs": "jsdox -Ao ./docs/ hex-math.js",
+		"test": "mocha -R spec ./test/hex-math.js"
 	},
 	"devDependencies": {
 		"chai": "^3.2.0",
+		"jsdox": "^0.4.9",
 		"mocha": "^2.2.5"
 	}
 }
