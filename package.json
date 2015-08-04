@@ -14,11 +14,14 @@
 	},
 	"scripts": {
 		"docs": "jsdox -Ao ./docs/ hex-math.js",
-		"test": "mocha -R spec ./test/hex-math.js"
+		"test": "find ./test -name '*.spec.js' | xargs mocha -R spec"
 	},
 	"devDependencies": {
 		"chai": "^3.2.0",
 		"jsdox": "^0.4.9",
 		"mocha": "^2.2.5"
+	},
+	"dependencies": {
+		"lodash": "^3.10.1"
 	}
 }
