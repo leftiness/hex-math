@@ -6,6 +6,21 @@ var hex = require('../../hex-math.js');
 var cubeToAxial = _.get(hex, 'convert.from.cube.to.axial');
 var axialToCube = _.get(hex, 'convert.from.axial.to.cube');
 
+function Cube(x, y, z) {
+  return {
+    'x': x,
+    'y': y,
+    'z': z
+  };
+}
+
+function Axial(q, r) {
+  return {
+    'q': q,
+    'r': r
+  };
+}
+
 describe('convert', function () {
   it('should exist', function () {
     hex.convert.should.exist;
@@ -72,37 +87,22 @@ describe('convert.from.cube.to.axial', function () {
   });
 
   it('should work with objects if keys are provided', function () {
-    var cube = {
-      'x': 2,
-      'y': 1,
-      'z': -3
-    };
+    var cube = Cube(2, 1, -3);
     var keys = ['x', 'y', 'z'];
     var axial = cubeToAxial(cube, keys);
 
-    axial.should.eql({
-      'q': 2,
-      'r': -3
-    });
+    axial.should.eql(Axial(2, -3));
   });
 
   it('should expect an array if no keys are provided', function () {
-    var cube = {
-      'x': 2,
-      'y': 1,
-      'z': -3
-    };
+    var cube = Cube(2, 1, -3);
     var fn = cubeToAxial.bind(hex, cube);
 
     fn.should.throw();
   });
 
   it('should throw w/ obj if keys/values don\'t sum to 0', function () {
-    var cube = {
-      'x': 2,
-      'y': 10,
-      'z': -3
-    };
+    var cube = Cube(2, 10, -3);
     var keys = ['x', 'y', 'z'];
     var fn = cubeToAxial.bind(hex, cube, keys);
 
@@ -110,11 +110,7 @@ describe('convert.from.cube.to.axial', function () {
   });
 
   it('should throw if object doesn\'t have the keys', function () {
-    var cube = {
-      'x': 2,
-      'y': 1,
-      'z': -3
-    };
+    var cube = Cube(2, 1, -3);
     var keys = ['x', 'hello', 'goodbye'];
     var fn = cubeToAxial.bind(hex, cube, keys);
 
@@ -182,35 +178,22 @@ describe('convert.from.axial.to.cube', function () {
   });
 
   it('should work with objects if keys are provided', function () {
-    var axial = {
-      'q': 2,
-      'r': -3
-    };
+    var axial = Axial(2, -3);
     var keys = ['q', 'r'];
     var cube = axialToCube(axial, keys);
 
-    cube.should.eql({
-      'x': 2,
-      'y': 1,
-      'z': -3
-    });
+    cube.should.eql(Cube(2, 1, -3));
   });
 
   it('should expect an array if no keys are provided', function () {
-    var axial = {
-      'q': 2,
-      'r': -3
-    };
+    var axial = Axial(2, -3);
     var cube = axialToCube.bind(hex, axial);
 
     cube.should.throw();
   });
 
   it('should throw if object doesn\'t have the keys', function () {
-    var axial = {
-      'q': 2,
-      'r': -3
-    };
+    var axial = Axial(2, -3);
     var keys = ['hello', 'goodbye'];
     var cube = axialToCube.bind(hex, axial);
 
