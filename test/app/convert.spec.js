@@ -58,7 +58,7 @@ describe('from', function () {
           axial.should.eql([2, -3]);
         });
 
-        it('should throw when the keys/values don\'t add up to 0', function () {
+        it('should throw when keys/values don\'t add up to 0', function () {
           var cube = [-3, -2, -1, 0, 1, 2, 3];
           var keys = [0, 1, 2];
           var fn = cubeToAxial.bind(hex, cube, keys);
@@ -92,7 +92,7 @@ describe('from', function () {
           fn.should.throw();
         });
 
-        it('should throw with obj if keys/values don\'t add up to 0', function () {
+        it('should throw w/ obj if keys/values don\'t sum to 0', function () {
           var cube = {
             'x': 2,
             'y': 10,

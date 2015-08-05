@@ -10,11 +10,11 @@ _.set(convert, 'from.axial.to.cube', function (axial, keys) {
   var outcome;
 
   if(_.isEmpty(axial)) {
-    throw new Error("Empty coordinates. " + axial);
+    throw new Error('Empty coordinates. ' + axial);
   }
 
   if (!_.isArray(axial) && _.isEmpty(keys)) {
-    throw new Error("Keys are required when coordinates are in an object. " + keys);
+    throw new Error('Coordinate objects require key array. ' + keys);
   }
 
   if (_.isEmpty(keys)) {
@@ -29,7 +29,7 @@ _.set(convert, 'from.axial.to.cube', function (axial, keys) {
 
   ([q, r]).forEach(function (each) {
     if (!_.isNumber(each)) {
-        throw new Error('Invalid coordinates. Type is not a number. ' + each);
+      throw new Error('Coordinate Type is not a number. ' + each);
     };
   });
 
@@ -60,7 +60,7 @@ _.set(convert, 'from.cube.to.axial', function (cube, keys) {
   }
 
   if (!_.isArray(cube) && _.isEmpty(keys)) {
-    throw new Error('Keys are required when coordinates are in an object. ' + keys);
+    throw new Error('Coordinate objects require key array. ' + keys);
   }
 
   if (_.isEmpty(keys)) {
@@ -77,12 +77,12 @@ _.set(convert, 'from.cube.to.axial', function (cube, keys) {
 
   ([x, y, z]).forEach(function (each) {
     if (!_.isNumber(each)) {
-        throw new Error('Invalid coordinates. Type is not a number. ' + each);
+        throw new Error('Coordinate type is not a number. ' + each);
     };
   });
 
   if (x + y + z !== 0) {
-    throw new Error('Invalid coordinates. X + Y + Z should equal 0. ' + [x, y, z]);
+    throw new Error('X + Y + Z should equal 0. ' + [x, y, z]);
   }
 
   if (_.isArray(cube)) {
