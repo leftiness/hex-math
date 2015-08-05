@@ -2,24 +2,12 @@ var should = require('chai').should();
 var _ = require('lodash');
 
 var hex = require('../../hex-math.js');
+var Cube = require('../../app/util/cube.js');
+var Axial = require('../../app/util/axial.js');
 
 var cubeToAxial = _.get(hex, 'convert.from.cube.to.axial');
 var axialToCube = _.get(hex, 'convert.from.axial.to.cube');
 
-function Cube(x, y, z) {
-  return {
-    'x': x,
-    'y': y,
-    'z': z
-  };
-}
-
-function Axial(q, r) {
-  return {
-    'q': q,
-    'r': r
-  };
-}
 
 describe('convert', function () {
   it('should exist', function () {
