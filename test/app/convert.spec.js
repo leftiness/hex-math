@@ -1,8 +1,10 @@
 var should = require('chai').should();
+var _ = require('lodash');
+
 var hex = require('../../hex-math.js');
 
-var cubeToAxial = hex.convert.from.cube.to.axial;
-var axialToCube = hex.convert.from.axial.to.cube;
+var cubeToAxial = _.get(hex, 'convert.from.cube.to.axial');
+var axialToCube = _.get(hex, 'convert.from.axial.to.cube');
 
 describe('from', function () {
 
