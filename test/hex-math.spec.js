@@ -7,12 +7,4 @@ describe('hex', function () {
       hex.should.exist;
   });
 
-  describe('convert', function () {
-
-    it('should exist', function () {
-      hex.convert.should.exist;
-    });
-
-  });
-
 });
