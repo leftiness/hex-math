@@ -33,7 +33,7 @@ describe('convert.from.cube.to', function () {
   });
 })
 
-describe('convert.from.cube.to.axial', function () {
+describe('convert.from.cube.to.axial()', function () {
   it('should exist', function () {
     cubeToAxial.should.exist;
   });
@@ -139,7 +139,7 @@ describe('convert.from.axial.to', function () {
   });
 });
 
-describe('convert.from.axial.to.cube', function () {
+describe('convert.from.axial.to.cube()', function () {
   it('should exist', function () {
     axialToCube.should.exist;
   });
