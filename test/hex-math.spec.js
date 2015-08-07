@@ -1,7 +1,7 @@
 var should = require('chai').should();
 var hex = require('../hex-math.js');
 
-describe('hex', function () {
+describe('hex-math', function () {
 
   it('should exist', function () {
       hex.should.exist;
