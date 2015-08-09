@@ -8,6 +8,7 @@
 		"url": "https://github.com/leftiness/hex-math"
 	},
 	"authors": "Brandon Parmenter <leftiness@gmail.com>",
+	"license": "MIT",
 	"private": false,
 	"engines": {
 		"node": "0.12.7"
