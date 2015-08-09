@@ -2,9 +2,7 @@ var _ = require('lodash');
 
 var _factory = {};
 
-_.set(_factory, 'create.from.axial', function (input, keys) {
-  var qKey;
-  var rKey;
+_.set(_factory, 'create.from.axial', function (input) {
   var q;
   var r;
   var outcome;
@@ -13,19 +11,13 @@ _.set(_factory, 'create.from.axial', function (input, keys) {
     throw new Error('Coordinates must be array or object. ' + input);
   };
 
-  if (!_.isArray(input) && _.isEmpty(keys)) {
-    throw new Error('Coordinate objects require key array. ' + keys);
+  if (_.isArray(input)) {
+    q = input[0];
+    r = input[1];
+  } else {
+    q = input['q'];
+    r = input['r'];
   }
-
-  if (_.isEmpty(keys)) {
-    keys = [0, 1];
-  }
-
-  qKey = keys[0];
-  rKey = keys[1];
-
-  q = input[qKey];
-  r = input[rKey];
 
   ([q, r]).forEach(function (each) {
     if (!_.isNumber(each)) {
@@ -45,10 +37,7 @@ _.set(_factory, 'create.from.axial', function (input, keys) {
   return outcome;
 });
 
-_.set(_factory, 'create.from.cube', function (input, keys) {
-  var xKey;
-  var yKey;
-  var zKey;
+_.set(_factory, 'create.from.cube', function (input) {
   var x;
   var y;
   var z;
@@ -58,21 +47,15 @@ _.set(_factory, 'create.from.cube', function (input, keys) {
     throw new Error('Coordinates must be array or object. ' + input);
   };
 
-  if (!_.isArray(input) && _.isEmpty(keys)) {
-    throw new Error('Coordinate objects require key array. ' + keys);
+  if (_.isArray(input)) {
+    x = input[0];
+    y = input[1];
+    z = input[2];
+  } else {
+    x = input['x'];
+    y = input['y'];
+    z = input['z'];
   }
-
-  if (_.isEmpty(keys)) {
-    keys = [0, 1, 2];
-  }
-
-  xKey = keys[0];
-  yKey = keys[1];
-  zKey = keys[2];
-
-  x = input[xKey];
-  y = input[yKey];
-  z = input[zKey];
 
   ([x, y, z]).forEach(function (each) {
     if (!_.isNumber(each)) {
