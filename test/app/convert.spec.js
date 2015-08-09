@@ -37,12 +37,7 @@ describe('convert.from.cube.to.axial()', function () {
   });
 
   it('should work with objects', function () {
-    var cube = {
-      'x': 2,
-      'y': 1,
-      'z': -3
-    }
-    var axial = _convert.from.cube.to.axial(cube);
+    var axial = _convert.from.cube.to.axial(_cube);
 
     axial.should.have.property('q').which.eql(2);
     axial.should.have.property('r').which.eql(-3);
@@ -64,11 +59,7 @@ describe('convert.from.axial.to.cube()', function () {
   });
 
   it('should work with objects', function () {
-    var axial = {
-      'q': 2,
-      'r': -3
-    }
-    var cube = _convert.from.axial.to.cube(axial);
+    var cube = _convert.from.axial.to.cube(_axial);
 
     cube.should.have.property('x').which.eql(2);
     cube.should.have.property('y').which.eql(1);
