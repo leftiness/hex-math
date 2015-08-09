@@ -1,8 +1,8 @@
 var _ = require('lodash');
 
-var factory = {};
+var _factory = {};
 
-_.set(factory, 'create.from.axial', function (input, keys) {
+_.set(_factory, 'create.from.axial', function (input, keys) {
   var qKey;
   var rKey;
   var q;
@@ -45,7 +45,7 @@ _.set(factory, 'create.from.axial', function (input, keys) {
   return outcome;
 });
 
-_.set(factory, 'create.from.cube', function (input, keys) {
+_.set(_factory, 'create.from.cube', function (input, keys) {
   var xKey;
   var yKey;
   var zKey;
@@ -97,4 +97,4 @@ _.set(factory, 'create.from.cube', function (input, keys) {
   return outcome;
 });
 
-module.exports = factory;
+module.exports = _factory;
