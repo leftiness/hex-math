@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var convert = require('./convert.js');
 
 var factory = {};
 
@@ -11,7 +10,7 @@ _.set(factory, 'create.from.axial', function (input, keys) {
   var outcome;
 
   if (_.isEmpty(input)) {
-    throw new Error('Invalid empty coordinates. ' + input);
+    throw new Error('Coordinates must be array or object. ' + input);
   };
 
   if (!_.isArray(input) && _.isEmpty(keys)) {
@@ -43,11 +42,6 @@ _.set(factory, 'create.from.axial', function (input, keys) {
     return [q, r];
   });
 
-  _.set(outcome, 'to.cube', function () {
-    var cube = convert.from.axial.to.cube([q, r]);
-    return factory.create.from.cube(cube);
-  })
-
   return outcome;
 });
 
@@ -61,7 +55,7 @@ _.set(factory, 'create.from.cube', function (input, keys) {
   var outcome;
 
   if (_.isEmpty(input)) {
-    throw new Error('Invalid empty coordinates. ' + input);
+    throw new Error('Coordinates must be array or object. ' + input);
   };
 
   if (!_.isArray(input) && _.isEmpty(keys)) {
@@ -98,11 +92,6 @@ _.set(factory, 'create.from.cube', function (input, keys) {
 
   _.set(outcome, 'to.array', function () {
     return [x, y, z];
-  });
-
-  _.set(outcome, 'to.axial', function () {
-    var axial = convert.from.cube.to.axial([x, y, z]);
-    return factory.create.from.axial(axial);
   });
 
   return outcome;

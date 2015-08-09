@@ -95,17 +95,6 @@ describe('factory.create.from.axial().to.array()', function () {
   });
 });
 
-describe('factory.create.from.axial().to.cube()', function () {
-  it('should return a cube coordinate object', function () {
-    var hex = factory.create.from.axial([2, -3]);
-    var cube = hex.to.cube();
-
-    cube.should.have.property('x').which.eql(2);
-    cube.should.have.property('y').which.eql(1);
-    cube.should.have.property('z').which.eql(-3);
-  });
-});
-
 describe('factory.create.from.cube()', function () {
   it('should exist', function () {
     factory.create.from.cube.should.exist;
@@ -191,19 +180,5 @@ describe('factory.create.from.cube().to.array()', function () {
     var array = hex.to.array();
 
     array.should.eql([2, 1, -3]);
-  });
-});
-
-describe('factory.create.from.cube().to.axial()', function () {
-  it('should exist', function () {
-    factory.create.from.cube([2, 1, -3]).to.axial.should.exist;
-  });
-
-  it('should should return an axial coordinate object', function () {
-    var hex = factory.create.from.cube([2, 1, -3]);
-    var axial = hex.to.axial();
-
-    axial.should.have.property('q').which.eql(2);
-    axial.should.have.property('r').which.eql(-3);
   });
 });
