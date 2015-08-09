@@ -2,24 +2,6 @@ var should = require('chai').should();
 
 var factory = require('../../app/factory.js');
 
-describe('factory', function () {
-  it('should exist', function () {
-    factory.should.exist;
-  });
-});
-
-describe('factory.create', function () {
-  it('should exist', function () {
-    factory.create.should.exist;
-  });
-});
-
-describe('factory.create.from', function () {
-  it('should exist', function () {
-    factory.create.from.should.exist;
-  });
-});
-
 describe('factory.create.from.axial()', function () {
   it('should exist', function () {
     factory.create.from.axial.should.exist;
@@ -77,14 +59,6 @@ describe('factory.create.from.axial()', function () {
     fn.should.throw();
   });
 });
-
-describe('factory.create.from.axial().to', function () {
-  it('should exist', function () {
-    var hex = factory.create.from.axial([2, -3]);
-
-    hex.to.should.exist;
-  });
-})
 
 describe('factory.create.from.axial().to.array()', function () {
   it('should return an axial array', function () {
@@ -161,12 +135,6 @@ describe('factory.create.from.cube()', function () {
     var fn = factory.create.from.cube.bind(factory, input);
 
     fn.should.throw();
-  });
-});
-
-describe('factory.create.from.cube().to', function () {
-  it('should exist', function () {
-    factory.create.from.cube([2, 1, -3]).to.should.exist;
   });
 });
 
