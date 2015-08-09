@@ -1,100 +1,23 @@
 var _ = require('lodash');
 
-var convert = {};
+var _factory = {};
+var _convert = {};
 
-_.set(convert, 'from.axial.to.cube', function (axial, keys) {
-  var qKey;
-  var rKey;
-  var q;
-  var r;
-  var outcome;
-
-  if(_.isEmpty(axial)) {
-    throw new Error('Empty coordinates. ' + axial);
-  }
-
-  if (!_.isArray(axial) && _.isEmpty(keys)) {
-    throw new Error('Coordinate objects require key array. ' + keys);
-  }
-
-  if (_.isEmpty(keys)) {
-    keys = [0, 1];
-  }
-
-  qKey = keys[0];
-  rKey = keys[1];
-
-  q = axial[qKey];
-  r = axial[rKey];
-
-  ([q, r]).forEach(function (each) {
-    if (!_.isNumber(each)) {
-      throw new Error('Coordinate Type is not a number. ' + each);
-    };
-  });
-
-  if (_.isArray(axial)) {
-    outcome = [q, -q - r, r];
-  } else {
-    outcome = {
-      'x': q,
-      'y': -q - r,
-      'z': r
-    };
-  }
-
-  return outcome;
+_.set(_convert, 'from.axial.to.cube', function (axial, keys) {
+  var hex = _factory.create.from.axial(axial, keys);
+  var q = hex.q;
+  var r = hex.r;
+  return _factory.create.from.cube([q, -q - r, r]);
 });
 
-_.set(convert, 'from.cube.to.axial', function (cube, keys) {
-  var xKey;
-  var yKey;
-  var zKey;
-  var x;
-  var y;
-  var z;
-  var outcome;
-
-  if (_.isEmpty(cube)) {
-    throw new Error('Invalid empty coordinates. ' + cube);
-  }
-
-  if (!_.isArray(cube) && _.isEmpty(keys)) {
-    throw new Error('Coordinate objects require key array. ' + keys);
-  }
-
-  if (_.isEmpty(keys)) {
-    keys = [0, 1, 2];
-  }
-
-  xKey = keys[0];
-  yKey = keys[1];
-  zKey = keys[2];
-
-  x = cube[xKey];
-  y = cube[yKey];
-  z = cube[zKey];
-
-  ([x, y, z]).forEach(function (each) {
-    if (!_.isNumber(each)) {
-        throw new Error('Coordinate type is not a number. ' + each);
-    };
-  });
-
-  if (x + y + z !== 0) {
-    throw new Error('X + Y + Z should equal 0. ' + [x, y, z]);
-  }
-
-  if (_.isArray(cube)) {
-    outcome = [x, z];
-  } else {
-    outcome = {
-      'q': x,
-      'r': z
-    };
-  }
-
-  return outcome;
+_.set(_convert, 'from.cube.to.axial', function (cube, keys) {
+  var hex = _factory.create.from.cube(cube, keys);
+  var x = hex.x;
+  var z = hex.z;
+  return _factory.create.from.axial([x, z]);
 });
 
-module.exports = convert;
+module.exports = function (factory) {
+  _factory = factory;
+  return _convert;
+};
