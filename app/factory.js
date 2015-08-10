@@ -33,11 +33,11 @@ var _create = function (input, keys) {
 }
 
 _.set(_factory, 'create.from.axial', function (input) {
-  return _create(input, ['q', 'r']);
+  return _create(input, ['q', 'r', 'h']);
 });
 
 _.set(_factory, 'create.from.cube', function (input) {
-  return _create(input, ['x', 'y', 'z']);
+  return _create(input, ['x', 'y', 'z', 'h']);
 });
 
 module.exports = _factory;

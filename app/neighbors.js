@@ -4,7 +4,7 @@ var _convert = {};
 var _factory = {};
 var _nei = {};
 
-var _axial = [
+var _directions = [
   [1, 0],
   [1, -1],
   [0, -1],
@@ -15,14 +15,20 @@ var _axial = [
 
 _.set(_nei, 'from.axial', function(axial) {
   var output = [];
+  var heights = [-1, 0, 1];
 
   axial = _factory.create.from.axial(axial);
 
-  _axial.forEach(function (each) {
-    var hex = {};
-    hex.q = axial.q + each[0];
-    hex.r = axial.r + each[1];
-    output.push(hex);
+  heights.forEach(function (height) {
+    _directions.forEach(function (direction) {
+      var hex = {};
+
+      hex.q = axial.q + direction[0];
+      hex.r = axial.r + direction[1];
+      hex.h = axial.h + height;
+
+      output.push(hex);
+    })
   });
 
   return output;
@@ -43,5 +49,6 @@ _.set(_nei, 'from.cube', function(cube) {
 module.exports = function (factory, convert) {
   _factory = factory;
   _convert = convert;
+
   return _nei;
 };

@@ -8,13 +8,15 @@ var _factory = {};
 
 var _axial = {
   'q': 2,
-  'r': -3
+  'r': -3,
+  'h': 1
 };
 
 var _cube = {
   'x': 2,
   'y': 1,
-  'z': -3
+  'z': -3,
+  'h': 1
 };
 
 _.set(_factory, 'create.from.axial', sinon.stub().returns(_axial));
@@ -29,11 +31,12 @@ describe('convert.from.cube.to.axial()', function () {
   });
 
   it('should return an axial hex object', function () {
-    var cube = [2, 1, -3];
+    var cube = [2, 1, -3, 1];
     var axial = _convert.from.cube.to.axial(cube);
 
     axial.should.have.property('q').which.eql(2);
     axial.should.have.property('r').which.eql(-3);
+    axial.should.have.property('h').which.eql(1);
   });
 
   it('should work with objects', function () {
@@ -41,6 +44,7 @@ describe('convert.from.cube.to.axial()', function () {
 
     axial.should.have.property('q').which.eql(2);
     axial.should.have.property('r').which.eql(-3);
+    axial.should.have.property('h').which.eql(1);
   });
 });
 
@@ -50,12 +54,13 @@ describe('convert.from.axial.to.cube()', function () {
   });
 
   it('should return a cube hex object', function () {
-    var axial = [2, -3];
+    var axial = [2, -3, 1];
     var cube = _convert.from.axial.to.cube(axial);
 
     cube.should.have.property('x').which.eql(2);
     cube.should.have.property('y').which.eql(1);
     cube.should.have.property('z').which.eql(-3);
+    cube.should.have.property('h').which.eql(1);
   });
 
   it('should work with objects', function () {
@@ -64,5 +69,6 @@ describe('convert.from.axial.to.cube()', function () {
     cube.should.have.property('x').which.eql(2);
     cube.should.have.property('y').which.eql(1);
     cube.should.have.property('z').which.eql(-3);
+    cube.should.have.property('h').which.eql(1);
   });
 });
