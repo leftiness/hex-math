@@ -56,6 +56,18 @@ describe('distance.between.axial()', function () {
   it('should return the distance as a number', function () {
     var distance = _distance.between.axial(_axial1, _axial2);
 
+    distance.should.eql(2);
+  });
+});
+
+describe('distance.between.axial.with.height()', function () {
+  it('should exist', function () {
+    _distance.between.axial.with.height.should.exist;
+  });
+
+  it('should return the distance as a number', function () {
+    var distance = _distance.between.axial.with.height(_axial1, _axial2);
+
     distance.should.eql(3);
   });
 });
@@ -68,6 +80,18 @@ describe('distance.between.cube()', function () {
   it('should return the distance as a number', function () {
     var distance = _distance.between.cube(_cube1, _cube2);
 
+    distance.should.eql(2);
+  });
+});
+
+describe('distance.between.cube.with.height()', function () {
+  it('should exist', function () {
+    _distance.between.cube.with.height.should.exist;
+  });
+
+  it('should return the distance as a number', function () {
+    var distance = _distance.between.cube.with.height(_cube1, _cube2);
+
     distance.should.eql(3);
-  })
-})
+  });
+});
