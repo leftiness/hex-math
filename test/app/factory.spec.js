@@ -86,7 +86,7 @@ describe('factory.create.from.cube()', function () {
   });
 
   it('should throw if x + y + z != 0', function () {
-    var fn = _factory.create.from.cube.bind(_factory [2, 2, 2, 2]);
+    var fn = _factory.create.from.cube.bind(_factory, [2, 2, 2, 2]);
 
     fn.should.throw();
   });

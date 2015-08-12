@@ -37,7 +37,14 @@ _.set(_factory, 'create.from.axial', function (input) {
 });
 
 _.set(_factory, 'create.from.cube', function (input) {
-  return _create(input, ['x', 'y', 'z', 'h']);
+  var hex = _create(input, ['x', 'y', 'z', 'h']);
+  var sum = hex.x + hex.y + hex.z;
+
+  if (sum != 0) {
+    throw new Error('x + y + z != 0 ' + hex.to.array());
+  }
+
+  return hex
 });
 
 module.exports = _factory;
