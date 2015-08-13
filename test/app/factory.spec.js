@@ -100,6 +100,15 @@ describe('factory.create.from.cube()', function () {
     cube.should.have.property('h').which.eql(1);
   });
 
+  it('should work despite infinite decimals like 1/3', function () {
+    var cube = _factory.create.from.cube([(8/3), (1/3), -3, 1]);
+
+    cube.should.have.property('x').which.eql(8/3);
+    cube.should.have.property('y').which.eql(1/3);
+    cube.should.have.property('z').which.eql(-3);
+    cube.should.have.property('h').which.eql(1);
+  });
+
   it('should throw if the input coordinates are not numbers', function () {
     var input = [5, false, 1, 'string'];
     var fn = _factory.create.from.cube.bind(_factory, input);

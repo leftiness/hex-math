@@ -38,9 +38,10 @@ _.set(_factory, 'create.from.axial', function (input) {
 
 _.set(_factory, 'create.from.cube', function (input) {
   var hex = _create(input, ['x', 'y', 'z', 'h']);
-  var sum = hex.x + hex.y + hex.z;
+  var sum = _.sum([hex.x, hex.y, hex.z]);
+  var floor = _.floor(sum, 5);
 
-  if (_.sum([hex.x, hex.y, hex.z]) !== 0) {
+  if (floor !== 0) {
     throw new Error('x + y + z != 0 ' + hex.to.array());
   }
 
