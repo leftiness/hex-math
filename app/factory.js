@@ -40,7 +40,7 @@ _.set(_factory, 'create.from.cube', function (input) {
   var hex = _create(input, ['x', 'y', 'z', 'h']);
   var sum = hex.x + hex.y + hex.z;
 
-  if (sum != 0) {
+  if (_.sum([hex.x, hex.y, hex.z]) !== 0) {
     throw new Error('x + y + z != 0 ' + hex.to.array());
   }
 
