@@ -16,6 +16,7 @@ var _hex1 = {
 var _hex2 = _.clone(_hex1);
 var _hex3 = _.clone(_hex1);
 var _hex4 = _.clone(_hex1);
+var _hex5 = _.clone(_hex1);
 
 _hex2.q = 3;
 _hex2.x = 3;
@@ -25,12 +26,17 @@ _hex2.h = 2;
 _hex3.q = 4;
 _hex3.x = 4;
 _hex3.y = -1;
-_hex3.h = 4;
+_hex3.h = 3;
 
-_hex4.q = 5;
-_hex4.x = 5;
-_hex4.y = -2;
-_hex4.h = 6;
+_hex4.q = 4;
+_hex4.x = 4;
+_hex4.y = -1;
+_hex4.h = 4;
+
+_hex5.q = 5;
+_hex5.x = 5;
+_hex5.y = -2;
+_hex5.h = 6;
 
 var _factory = {};
 var _convert = {};
@@ -43,11 +49,13 @@ _stubRound.onCall(0).returns(_hex1);
 _stubRound.onCall(1).returns(_hex2);
 _stubRound.onCall(2).returns(_hex3);
 _stubRound.onCall(3).returns(_hex4);
+_stubRound.onCall(4).returns(_hex5);
 
-_stubRound.onCall(4).returns(_hex1);
-_stubRound.onCall(5).returns(_hex2);
-_stubRound.onCall(6).returns(_hex3);
-_stubRound.onCall(7).returns(_hex4);
+_stubRound.onCall(5).returns(_hex1);
+_stubRound.onCall(6).returns(_hex2);
+_stubRound.onCall(7).returns(_hex3);
+_stubRound.onCall(8).returns(_hex4);
+_stubRound.onCall(9).returns(_hex5);
 
 _.set(_factory, 'create.from.axial', sinon.stub().returnsArg(0));
 _.set(_factory, 'create.from.cube', sinon.stub.returnsArg(0));
@@ -75,11 +83,15 @@ describe('line.from.axial', function () {
 
     results[2].should.have.property('q').which.eql(4);
     results[2].should.have.property('r').which.eql(-3);
-    results[2].should.have.property('h').which.eql(4);
+    results[2].should.have.property('h').which.eql(3);
 
-    results[3].should.have.property('q').which.eql(5);
+    results[3].should.have.property('q').which.eql(4);
     results[3].should.have.property('r').which.eql(-3);
-    results[3].should.have.property('h').which.eql(6);
+    results[3].should.have.property('h').which.eql(4);
+
+    results[4].should.have.property('q').which.eql(5);
+    results[4].should.have.property('r').which.eql(-3);
+    results[4].should.have.property('h').which.eql(6);
   });
 });
 
@@ -96,19 +108,24 @@ describe('line.from.cube', function () {
     results[0].should.have.property('z').which.eql(-3);
     results[0].should.have.property('h').which.eql(1);
 
-    results[1].should.have.property('q').which.eql(3);
+    results[1].should.have.property('x').which.eql(3);
     results[1].should.have.property('y').which.eql(0);
-    results[1].should.have.property('r').which.eql(-3);
+    results[1].should.have.property('z').which.eql(-3);
     results[1].should.have.property('h').which.eql(2);
 
-    results[2].should.have.property('q').which.eql(4);
+    results[2].should.have.property('x').which.eql(4);
     results[2].should.have.property('y').which.eql(-1);
-    results[2].should.have.property('r').which.eql(-3);
-    results[2].should.have.property('h').which.eql(4);
+    results[2].should.have.property('z').which.eql(-3);
+    results[2].should.have.property('h').which.eql(3);
 
-    results[3].should.have.property('q').which.eql(5);
-    results[3].should.have.property('y').which.eql(-2);
-    results[3].should.have.property('r').which.eql(-3);
-    results[3].should.have.property('h').which.eql(6);
+    results[3].should.have.property('x').which.eql(4);
+    results[3].should.have.property('y').which.eql(-1);
+    results[3].should.have.property('z').which.eql(-3);
+    results[3].should.have.property('h').which.eql(4);
+
+    results[4].should.have.property('x').which.eql(5);
+    results[4].should.have.property('y').which.eql(-2);
+    results[4].should.have.property('z').which.eql(-3);
+    results[4].should.have.property('h').which.eql(6);
   });
 });
