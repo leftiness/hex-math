@@ -65,7 +65,7 @@ _.set(_round, 'cube', _stubRound);
 
 _line = _line(_factory, _convert, _round, _distance);
 
-describe('line.from.axial', function () {
+describe('line.from.axial()', function () {
   it('should exist', function () {
     _line.from.axial.should.exist;
   });
@@ -95,7 +95,7 @@ describe('line.from.axial', function () {
   });
 });
 
-describe('line.from.cube', function () {
+describe('line.from.cube()', function () {
   it('should exist', function () {
     _line.from.cube.should.exist;
   });

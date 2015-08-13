@@ -42,7 +42,7 @@ _.set(_convert, 'from.cube.to.axial', _stubCubeCon);
 
 _round = _round(_factory, _convert);
 
-describe('round.axial', function () {
+describe('round.axial()', function () {
   it('should exist', function () {
     _round.axial.should.exist;
   });
@@ -56,7 +56,7 @@ describe('round.axial', function () {
   });
 });
 
-describe('round.cube', function () {
+describe('round.cube()', function () {
   it('should exist', function () {
     _round.cube.should.exist;
   });
