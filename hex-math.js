@@ -6,6 +6,7 @@ var _neighbors = require('./app/neighbors.js')(_factory, _convert);
 var _distance = require('./app/distance.js')(_factory, _convert);
 var _round = require('./app/round.js')(_factory, _convert);
 var _line = require('./app/line.js')(_factory, _convert, _round, _distance);
+var _range = require('./app/range.js')(_factory, _convert);
 
 _hex.factory = _factory;
 _hex.convert = _convert;
@@ -13,5 +14,6 @@ _hex.neighbors = _neighbors;
 _hex.distance = _distance;
 _hex.round = _round;
 _hex.line = _line;
+_hex.range = _range;
 
 module.exports = _hex;
